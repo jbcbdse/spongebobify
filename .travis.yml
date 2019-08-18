@@ -1,9 +1,27 @@
 language: node_js
+node_js:
+  - 10
+install:
+  - npm install
+
+stages:
+  - build
+  - test
+  - name: deploy
+    if: branch = master
+
 jobs:
   include:
-    - stage: install
-      script: npm install
     - stage: build
       script: npm run build
     - stage: test
       script: npm run test
+    - stage: release
+      node_js: lts/*
+      # Advanced: optionally overwrite your default `script` step to skip the tests
+      # script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx semantic-release

@@ -1,6 +1,6 @@
 {
   "name": "spongebobify",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Output spongebob meme text from regular text",
   "main": "dist/index.js",
   "scripts": {
@@ -9,7 +9,8 @@
     "start": "node dist/index.js",
     "test": "jest",
     "watch": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.test.ts' --exec node -r ts-node/register src/index.ts",
-    "watch:debug": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.test.ts' --exec node -r ts-node/register --inspect-brk src/index.ts"
+    "watch:debug": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.test.ts' --exec node -r ts-node/register --inspect-brk src/index.ts",
+    "semantic-release": "semantic-release"
   },
   "author": "Jon Barnett",
   "license": "ISC",
@@ -21,9 +22,14 @@
     "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "semantic-release": "^15.13.21"
   },
   "dependencies": {
     "yargs": "^13.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jbcbdse/spongebobify.git"
   }
 }
