@@ -16,10 +16,9 @@ function* bitFlipperGen(maxTimes: number) {
   }
 }
 
-const MAX_LETTERS_IN_SAME_CASE = 3;
-const spongebobify = (text: string) => {
+const spongebobify = (maxLettersInSameCase: number) => (text: string) => {
   const chars = text.split('');
-  const bitFlipper = bitFlipperGen(MAX_LETTERS_IN_SAME_CASE);
+  const bitFlipper = bitFlipperGen(maxLettersInSameCase);
   return chars
     .map((char) => {
       const transformer = /[a-z]/i.test(char)
@@ -62,6 +61,12 @@ export const builder = (y: yargs.Argv) => {
     })
     .help();
 };
-export const handler = ({ text }: { text: any }) => {
-  writeln(spongebobify((text as string[]).join(' ')));
+export const handler = ({
+  text,
+  maxLettersInSameCase,
+}: {
+  text: any;
+  maxLettersInSameCase: number;
+}) => {
+  writeln(spongebobify(maxLettersInSameCase)((text as string[]).join(' ')));
 };
