@@ -6,6 +6,11 @@ An implementation of the Spongebob Meme Kata
 
 Write a function that will take 'normal text' and convert it to 'NOrmaAl TexT'
 
+Rules:
+
+1. Must take user input
+2. Must have 100% test coverage
+
 ## Implementation
 
 It randomly capitalizes letters, but it will not have more than 3 letters in a row in the same case. (This is easily configurable) When counting, anything other than letters a-z are ignored and not transformed.
