@@ -10,7 +10,8 @@
     "test": "jest",
     "watch": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.test.ts' --exec node -r ts-node/register src/index.ts",
     "watch:debug": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.test.ts' --exec node -r ts-node/register --inspect-brk src/index.ts",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "prepublish": "npm run build"
   },
   "author": "Jon Barnett",
   "license": "ISC",
@@ -31,5 +32,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jbcbdse/spongebobify.git"
-  }
+  },
+  "types": "dist/index.d.ts"
 }
