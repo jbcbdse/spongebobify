@@ -1,6 +1,3 @@
-import yargs from 'yargs';
-import { writeln } from '../write/write';
-
 const randomInt = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1) + min);
 
@@ -16,7 +13,10 @@ function* bitFlipperGen(maxTimes: number) {
   }
 }
 
-const spongebobify = (maxLettersInSameCase: number) => (text: string) => {
+const DEFAULT_MAX_SAME_CASE_CHARS = 3;
+const spongebobify = (
+  maxLettersInSameCase: number = DEFAULT_MAX_SAME_CASE_CHARS,
+) => (text: string) => {
   const chars = text.split('');
   const bitFlipper = bitFlipperGen(maxLettersInSameCase);
   return chars
@@ -42,31 +42,4 @@ const transform: {
   [TransformType.SAME]: (char) => char,
 };
 
-export const command = '$0 [text..]';
-export const desc = 'Spongebobify text';
-export const builder = (y: yargs.Argv) => {
-  return y
-    .usage('$0 [text..]')
-    .usage('$0 This is the text to transform')
-    .usage('$0 "This is the text to transform"')
-    .positional('text', {
-      default: [],
-      describe: 'The text to transform',
-    })
-    .options('maxLettersInSameCase', {
-      default: 3,
-      describe:
-        'The maximum number of letters in a row that can be the same case',
-      type: 'number',
-    })
-    .help();
-};
-export const handler = ({
-  text,
-  maxLettersInSameCase,
-}: {
-  text: any;
-  maxLettersInSameCase: number;
-}) => {
-  writeln(spongebobify(maxLettersInSameCase)((text as string[]).join(' ')));
-};
+export default spongebobify;
