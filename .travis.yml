@@ -7,7 +7,7 @@ install:
 stages:
   - build
   - test
-  - name: deploy
+  - name: release
     if: branch = master
 
 jobs:
