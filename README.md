@@ -12,7 +12,7 @@ It randomly capitalizes letters, but it will not have more than 3 letters in a r
 
 The counting is implemented with a generator that will flip a bit between 1 and 0. The bit starts randomly as 1 or 0, and the will yield the same for a random number of times between 1 and 3. After that, the bit will be flipped, and the number of times will be reset to a random number between 1 and 3 again, continuing indefinitely.
 
-The CLI is built with yargs. The number of consecutive same-case letters can be configured with `--maxLettersInSameCase={num}`
+The CLI is built with yargs. The number of consecutive same-case letters can be configured with `--maxLettersInSameCase={num}`. The text is implemented as variadic positional args. In other words, all args are just turned into an array and joined with `' '`. Text can either be quoted or not quoted, similar to the bash `echo` command.
 
 ## Tests
 
