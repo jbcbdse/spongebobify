@@ -1,34 +1,23 @@
-# Typescript Seed project
+# The Spongebob Meme Kata
 
-This is a barebones setup for a running application with Typescript and Node.
+An implementation of the Spongebob Meme Kata
 
-Features:
+## Description
 
-- node version specified in .nvmrc
-- Typescript installed as dev dependency
-- `npm run watch` configured with nodemon and ts-node
-- `npm run watch:debug` configured with `--inspect-brk` flag
-- tsconfig and tslint configs set up with sensible defaults
-- jest configured for unit testing with sensible defaults
-- This README
+Write a function that will take 'normal text' and convert it to 'NOrmaAl TexT'
 
-## Using this seed
+## Implementation
 
-Fork this repo and start coding adding code to the `src/` directory.
+It randomly capitalizes letters, but it will not have more than 3 letters in a row in the same case. (This is easily configurable) When counting, anything other than letters a-z are ignored and not transformed.
 
-## Developing
+The counting is implemented with a generator that will flip a bit between 1 and 0. The bit starts randomly as 1 or 0, and the will yield the same for a random number of times between 1 and 3. After that, the bit will be flipped, and the number of times will be reset to a random number between 1 and 3 again, continuing indefinitely.
 
-Develop and test the running application with `npm run watch` or `npm run watch:debug`
+The CLI is built with yargs. The number of consecutive same-case letters can be configured with `--maxLettersInSameCase={num}`
 
-Run unit tests with `npm run test`
+## Tests
 
-## Run your application
+Tests are in Jest.
 
-Build the app first with `npm run build`
+The main module test is one large unit, except for the `writeLn` function, which uses stdout. A module mock is used to mock it for the main module tests.
 
-Run the app with `npm start`
-
-## Contributing
-
-Feel free to add more sensible defaults for a basic node application, such as a "prettier" config, if that would
-best, or a `npm run tdd` script for running tests in a watch mode.
+The `writeLn` function is tested separately simply to prove that calls `process.stdout.write`.
