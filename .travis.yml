@@ -1,0 +1,9 @@
+language: node_js
+jobs:
+  include:
+    - stage: install
+      script: npm install
+    - stage: build
+      script: npm run build
+    - stage: test
+      script: npm run test
